@@ -16,3 +16,24 @@ Este es un posible caso de uso de la aplicación:
 Este repositorio cuenta con:
 * Un directorio ```documents``` donde se pueden ver los documentos que hemos desarrollado para este proyecto.
 * Un directorio ```test``` donde se encuentran los tests automáticos que utilizaremos para comprobar que el sistema realiza sus funciones correctamente.
+
+
+## Tests
+Se han implementado una serie de tests que prueban el correcto funcionamiento del sistema. 
+Gracias a estos se puede definir y acotar la funcionalidad del sistema y sus funciones.
+
+### Ejecución de los tests
+Se ha diseñado un `Dockerfile` siguiendo las prácticas de <infrastructure-as-code> donde se encuentran
+varios <stages>. Cabe resaltar que se hace uso de <BuildKit> por lo que deberá estar disponible en
+la máquina donde se quiera ejecutar. 
+
+Para la ejecución de los test vale con ejecutar el siguiente comando:
+`docker build --target test .`
+
+#### En Local
+Si se quiere probar en local hará falta instalarse todos los requisitos y los datos que se encuentran
+en la carpeta compartida:
+[Datos en Google Drive](https://drive.google.com/drive/folders/1Ey2Gqbc6ZLqrLN8X1DMXFGKI48vYWFrJ?usp=sharing)
+
+Posteriormente habrá que ejecutar el comando:
+`python -m unittest test/*`
