@@ -13,5 +13,5 @@ FROM environment as test
 WORKDIR /app
 COPY . .
 # Add data
-RUN gdown --folder "https://drive.google.com/drive/folders/1Ey2Gqbc6ZLqrLN8X1DMXFGKI48vYWFrJ?usp=sharing"
+RUN gdown --folder "https://drive.google.com/drive/folders/1Ey2Gqbc6ZLqrLN8X1DMXFGKI48vYWFrJ"
 RUN python -m unittest test/*
