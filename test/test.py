@@ -6,7 +6,7 @@ import numpy as np
 import os
 
 current_path = os.path.dirname(os.path.abspath(__file__))
-test_data_dir = os.path.join(current_path, '../data/test/')
+test_data_dir = os.path.join(current_path, '../data/')
 
 
 class Test(unittest.TestCase):
@@ -20,7 +20,7 @@ class Test(unittest.TestCase):
         Test pixel from given coordinates. Pixel must be in accepted region [(382, 187), (437, 274)]
         """
         coordinates = (30.230360, -97.788103)
-        image = "austin1.tif"
+        image = test_data_dir + "austin1.tif"
 
         w, h = self.MS.get_pixel_from_coordinates(image, coordinates)
 

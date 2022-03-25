@@ -6,12 +6,12 @@ ENV C_INCLUDE_PATH /usr/include/gdal
 COPY requirements.txt .
 RUN xargs -n 1 pip install < requirements.txt
 
-CMD ['/bin/bash']
+CMD /bin/bash
 
 FROM environment as test
 
 WORKDIR /app
 COPY . .
 # Add data
-RUN gdown --folder "https://drive.google.com/drive/folders/1Ey2Gqbc6ZLqrLN8X1DMXFGKI48vYWFrJ"
+RUN gdown --folder "https://drive.google.com/drive/folders/1Ey2Gqbc6ZLqrLN8X1DMXFGKI48vYWFrJ?usp=sharing"
 RUN python -m unittest test/*
