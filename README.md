@@ -17,6 +17,13 @@ Este repositorio cuenta con:
 * Un directorio ```documents``` donde se pueden ver los documentos que hemos desarrollado para este proyecto.
 * Un directorio ```test``` donde se encuentran los tests automáticos que utilizaremos para comprobar que el sistema realiza sus funciones correctamente.
 
+## Instalación de TrafficDetector
+
+### Opción 1: Github
+
+
+### Opción 1: Docker
+
 
 ## Tests
 Se han implementado una serie de tests que prueban el correcto funcionamiento del sistema. 
