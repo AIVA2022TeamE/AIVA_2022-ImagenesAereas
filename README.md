@@ -23,14 +23,15 @@ Este repositorio cuenta con:
 
 i) La versión de Python que se va a emplear es 3.10.3
 
-ii) Es necesario ejecutar el siguiente comando para instalar las librerías necesarias para la ejecución del proyecto (la ejecución de dicho comando debe realizarse en el directorio que contenga el archivo requirements.txt).
+ii) Es necesario ejecutar el siguiente comando para instalar las librerías necesarias para la ejecución del proyecto (la ejecución de dicho comando debe realizarse en el directorio que contenga el archivo requirements.txt):
 
   * pip install -r requirements.txt
 
 iii) Existen dos maneras para descargar el programa mediante Github:
 
   * Descargar directamente el programa abriendo la pestaña verde Code situada en la parte superior del Github, y posteriormente pulsar en descargar zip
-  * Otra opción es lanzar el siguiente comando:  
+  * Otra opción es lanzar el siguiente comando:
+    
     * git clone https://github.com/AIVA2022TeamE/AIVA_2022-ImagenesAereas
 
 iv) El siguiente paso es la ejecución del programa. 
