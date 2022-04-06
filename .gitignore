@@ -1,6 +1,7 @@
 # Custom
 data/
 src/utils
+.idea/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
