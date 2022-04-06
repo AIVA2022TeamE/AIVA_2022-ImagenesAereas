@@ -17,6 +17,32 @@ Este repositorio cuenta con:
 * Un directorio ```documents``` donde se pueden ver los documentos que hemos desarrollado para este proyecto.
 * Un directorio ```test``` donde se encuentran los tests automáticos que utilizaremos para comprobar que el sistema realiza sus funciones correctamente.
 
+## Instalación de TrafficDetector
+
+### Github
+
+i) La versión de Python que se va a emplear es 3.10.3
+
+ii) Es necesario ejecutar el siguiente comando para instalar las librerías necesarias para la ejecución del proyecto (la ejecución de dicho comando debe realizarse en el directorio que contenga el archivo requirements.txt):
+
+  * pip install -r requirements.txt
+
+iii) Existen dos maneras para descargar el programa mediante Github:
+
+  * Descargar directamente el programa abriendo la pestaña verde Code situada en la parte superior del Github, y posteriormente pulsar en descargar zip
+  * Otra opción es lanzar el siguiente comando:
+    
+    * git clone https://github.com/AIVA2022TeamE/AIVA_2022-ImagenesAereas
+
+iv) El siguiente paso es la ejecución del programa. 
+
+  a) Para ello se debe lanzar el siguiente comando desde el directorio src:
+
+    * python Principal.py --input="input/path" --output="output/path"
+  
+  b) Si se utiliza un contenedor docker basta con ejecutar el siguiente comando:
+  
+    * docker build --target src
 
 ## Tests
 Se han implementado una serie de tests que prueban el correcto funcionamiento del sistema. 
@@ -29,7 +55,7 @@ la máquina donde se quiera ejecutar.
 
 Para la ejecución de los test vale con ejecutar el siguiente comando:
 `docker build --target test .`
-
+  
 Este comando de `docker` exporta los resultados del test en una página html en el directorio actual.
 
 #### En Local
@@ -39,6 +65,7 @@ en la carpeta compartida:
 
 Posteriormente habrá que ejecutar el comando:
 `python -m unittest test/*`
+  
 
 ## Contribución
 Debido a que el proyecto depende de binarios externos a python desarrollar en este proyecto puede ser una tarea complicada. Por este motivo se ha decidido hacer un entorno de desarrollo basado en <Docker> y que puede ser fácilmente desplegado en el IDE VSCode.
