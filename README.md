@@ -34,7 +34,8 @@ iii) Existen dos maneras para descargar el programa mediante Github:
     * git clone https://github.com/AIVA2022TeamE/AIVA_2022-ImagenesAereas
 
 iv) El siguiente paso es la ejecución del programa. Para ello se debe lanzar el siguiente comando desde el directorio src:
-  * python3 Principal.py
+
+  * python Principal.py --input="input/path" --output="output/path"
 
 ### Opción 2: Docker
 
