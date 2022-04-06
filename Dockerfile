@@ -7,12 +7,21 @@ ENV QT_QPA_PLATFORM offscreen
 COPY requirements.txt .
 RUN xargs -n 1 pip install < requirements.txt
 
-CMD ['/bin/bash']
+CMD ["/bin/bash"]
 
-FROM environment as test
+
+FROM environment as make_test
 
 WORKDIR /app
-COPY . .
 # Add data
-RUN gdown --folder "https://drive.google.com/drive/folders/1Ey2Gqbc6ZLqrLN8X1DMXFGKI48vYWFrJ"
-RUN python -m unittest test/*
+RUN mkdir data && wget -O data/data.zip https://urjc-my.sharepoint.com/:u:/g/personal/d_correas_2016_alumnos_urjc_es/EdLVog_IJA5Fq71O8tTwpHYBHql0oVRF0fzYnwnoWck2fQ?download=1
+RUN unzip data/data.zip -d data
+RUN rm data/data.zip
+# Add project
+COPY . .
+WORKDIR /app/test
+RUN python ./*.py
+
+
+FROM scratch AS test
+COPY --from=make_test /app/test/results .

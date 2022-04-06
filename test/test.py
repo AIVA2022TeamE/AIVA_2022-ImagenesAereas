@@ -1,6 +1,7 @@
 import os
 import sys
 import unittest
+import HtmlTestRunner
 import cv2.cv2 as cv2
 import numpy as np
 
@@ -86,4 +87,4 @@ if __name__ == '__main__':
 
     # Test launch
     unittest.TextTestRunner().run(test_results)
-    unittest.main()
+    unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='./results'))
