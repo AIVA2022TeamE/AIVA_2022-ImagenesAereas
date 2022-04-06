@@ -1,25 +1,24 @@
 from typing import List
 import numpy as np
 import Detector
+# import map_slicer
 
 
 class TrafficDetector:
-    def __init__(self):
+    def __init__(self, img: np.ndarray):
         """
         TrafficDetector constructor.
         """
-        self._img = None
-        self._coordinates = None
+        self._img = img
+        # self._coordinates = None
         self._vehicles = []
-        self._detector = Detector
+        self._detector = Detector.Detector
 
-    def get_cars_number_from_image(self, img: np.ndarray) -> List:
+    def get_cars_from_image(self) -> List:
         """
         Recognize vehicles in image.
-        param np.ndarray img: The target image.
         :return: the list with all detected vehicles.
         """
-        self._img = img
         self._slide()
 
         # Flatten list
@@ -34,7 +33,6 @@ class TrafficDetector:
         STEP = 250
 
         cols, rows = self._img.shape[:-1]
-
         for col in range(0, cols, STEP):
             for row in range(0, rows, STEP):
                 vehicles = self._detector.detect_vehicles(
