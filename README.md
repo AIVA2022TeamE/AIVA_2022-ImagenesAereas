@@ -19,7 +19,7 @@ Este repositorio cuenta con:
 
 ## Instalación de TrafficDetector
 
-### Opción 1: Github
+### Github
 
 i) La versión de Python que se va a emplear es 3.10.3
 
@@ -33,11 +33,15 @@ iii) Existen dos maneras para descargar el programa mediante Github:
   * Otra opción es lanzar el siguiente comando:  
     * git clone https://github.com/AIVA2022TeamE/AIVA_2022-ImagenesAereas
 
-iv) El siguiente paso es la ejecución del programa. Para ello se debe lanzar el siguiente comando desde el directorio src:
+iv) El siguiente paso es la ejecución del programa. 
 
-  * python Principal.py --input="input/path" --output="output/path"
+  a) Para ello se debe lanzar el siguiente comando desde el directorio src:
 
-### Opción 2: Docker
+    * python Principal.py --input="input/path" --output="output/path"
+  
+  b) Si se utiliza un contenedor docker basta con ejecutar el siguiente comando:
+  
+    * docker build --target src
 
 
 
