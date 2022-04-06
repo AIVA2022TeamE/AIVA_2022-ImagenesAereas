@@ -44,20 +44,6 @@ iv) El siguiente paso es la ejecución del programa.
   
     * docker build --target src
 
-## Issues
-Se pretende describir el tiempo estimado para cada una de ellas y el tiempo que finalmente se ha empleado.
-
-i) Reunión con el cliente
-  * Tiempo estimado: 1 día
-  * Tiempo empleado: 1 día
-  
-ii) Creación del DRS y del presupuesto, y preparación del repositirio
-  * Tiempo estimado: 2 semanas
-  * Tiempo empleado: 2 semanas
-
-iii) Búsqueda de métodos de detección de vehículos y de calles, y creación de los datasets
-  * Tiempo estimado: 2 semanas
-  * Tiempo empleado: 2 semanas
 
 ## Tests
 Se han implementado una serie de tests que prueban el correcto funcionamiento del sistema. 
