@@ -3,6 +3,7 @@ import cv2.cv2 as cv
 import TrafficDetector
 import DrawBBox
 import argparse
+# from MapSlicer import MapSlicer  # TODO: Integrate with detector
 
 
 class Principal:
@@ -14,12 +15,18 @@ class Principal:
     def main(self):
         for filename in os.listdir(self.input):
             image = cv.imread(os.path.join(self.input, filename))
+
+            # TODO: Integrate with detector
+            # map_slicer = MapSlicer()
+            # image = map_slicer.get_street_image(os.path.join(self.input, filename), "Green Forest Dr, austin")
+
             vehicle_detector = TrafficDetector.TrafficDetector(image)
             vehicles = vehicle_detector.get_cars_from_image()
             draw_bbox = DrawBBox.DrawBBox()
             output_image = draw_bbox.draw(image, vehicles)
-            cv.imshow(filename, output_image)
-            cv.waitKey(0)
+            # TODO: Fix for docker
+            # cv.imshow(filename, output_image)
+            # cv.waitKey(0)
             cv.imwrite(self.output + "/" + filename, output_image)
             cv.destroyAllWindows()
 
