@@ -1,45 +1,50 @@
-from src.traffic_detector import TrafficDetector
-from src.map_slicer import MapSlicer
+import os
+import sys
 import unittest
+import HtmlTestRunner
 import cv2.cv2 as cv2
 import numpy as np
-import os
 
 current_path = os.path.dirname(os.path.abspath(__file__))
-test_data_dir = os.path.join(current_path, '../data/test/')
+list_paths = [os.sep.join([current_path, os.pardir, 'src']), os.sep.join([current_path, os.pardir])]
+for path in list_paths:
+    if path not in sys.path:
+        sys.path.insert(0, path)
+
+from TrafficDetector import TrafficDetector
+from MapSlicer import MapSlicer
+
+
+test_data_dir = os.path.join(current_path, '../data/')
 
 
 class Test(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.TD = TrafficDetector()
         cls.MS = MapSlicer()
 
     def test_coordinates_to_pixel(self):
         """
         Test pixel from given coordinates. Pixel must be in accepted region [(382, 187), (437, 274)]
         """
-        coordinates = (30.230360, -97.788103)
-        image = "austin1.tif"
+        coordinates = (30.218193, -97.7859167)
+        image = os.sep.join([test_data_dir, "austin1.tif"])
+        gt_pixel = (1133, 4722)
 
-        w, h = self.MS.get_pixel_from_coordinates(image, coordinates)
+        h, w = self.MS.get_pixel_from_coordinates(image, coordinates)
 
-        # First point
-        str_error = f'Pixel ({w, h})out of bounds (382, 187), (437, 274) for given coordenates: ' \
-                    f'(30.230360, -97.788103)'
-        self.assertGreater(w, 382, str_error)
-        self.assertGreater(h, 187, str_error)
+        str_error = f'Pixel ({w, h})out of bounds {gt_pixel} for given coordenates: ' \
+                    f'{coordinates}'
+        self.assertEqual(h, gt_pixel[0], str_error)
+        self.assertEqual(w, gt_pixel[1], str_error)
 
-        # Second point
-        self.assertLess(w, 437, str_error)
-        self.assertLess(h, 274, str_error)
 
     def test_street_coordenates(self):
         """
         Test MapSlicer returns any coordinates given street name.
         """
-        street_name = "West 27th street, Austin"
-        coordenates = self.MS.get_street_location(street_name)
+        street_name = "Lark Cove, austin"
+        coordenates = self.MS.get_street_box_in_coordinates(street_name)
 
         self.assertGreater(len(coordenates), 0)
 
@@ -47,11 +52,12 @@ class Test(unittest.TestCase):
         """
         Test for checking the number of cars detected by TrafficDetector.
         """
-        image = cv2.imread(test_data_dir + 'slice-test-number-cars.png')
-        n_cars = self.TD.get_cars_number_from_image(image)
+        image = cv2.imread(test_data_dir + 'image21.png')
+        TD = TrafficDetector(image)
+        cars_list = TD.get_cars_from_image()
         # Pass: +-1 cars
-        self.assertGreater(n_cars, 6)
-        self.assertLess(n_cars, 8)
+        self.assertGreater(len(cars_list), 6)
+        self.assertLess(len(cars_list), 12)
 
     def test_street_surface(self):
         """
@@ -81,4 +87,4 @@ if __name__ == '__main__':
 
     # Test launch
     unittest.TextTestRunner().run(test_results)
-    unittest.main()
+    unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='./results'))

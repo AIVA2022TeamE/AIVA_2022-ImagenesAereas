@@ -44,7 +44,6 @@ iv) El siguiente paso es la ejecución del programa.
   
     * docker build --target src
 
-
 ## Tests
 Se han implementado una serie de tests que prueban el correcto funcionamiento del sistema. 
 Gracias a estos se puede definir y acotar la funcionalidad del sistema y sus funciones.
@@ -56,6 +55,8 @@ la máquina donde se quiera ejecutar.
 
 Para la ejecución de los test vale con ejecutar el siguiente comando:
 `docker build --target test .`
+  
+Este comando de `docker` exporta los resultados del test en una página html en el directorio actual.
 
 #### En Local
 Si se quiere probar en local hará falta instalarse todos los requisitos y los datos que se encuentran
@@ -66,4 +67,7 @@ Posteriormente habrá que ejecutar el comando:
 `python -m unittest test/*`
   
 
+## Contribución
+Debido a que el proyecto depende de binarios externos a python desarrollar en este proyecto puede ser una tarea complicada. Por este motivo se ha decidido hacer un entorno de desarrollo basado en <Docker> y que puede ser fácilmente desplegado en el IDE VSCode.
 
+Todos los ficheros necesarios se encuentran en en directorio `.devcontainer` y puede ser desplegado abrindo el proyecto con VSCode > `Ctrl+Shift+P` > Remote-Container: Open Folder In Container 

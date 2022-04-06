@@ -39,7 +39,6 @@ class TrafficDetector:
                     self._img[row: row + STEP, col: col + STEP], row, col
                 )
                 self._vehicles.append(vehicles)
-
-    @staticmethod
+    
     def get_cars_density_from_image(self):
         return len(self._vehicles) / (self._img.shape[0] * self._img.shape[1])

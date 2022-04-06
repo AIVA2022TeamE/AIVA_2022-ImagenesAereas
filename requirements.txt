@@ -1,5 +1,6 @@
 numpy
-gdown
+requests
 opencv-python
 setuptools==57.5.0
 GDAL==3.2.2
+html-testRunner
