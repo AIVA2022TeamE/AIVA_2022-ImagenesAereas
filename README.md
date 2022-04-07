@@ -54,9 +54,14 @@ varios <stages>. Cabe resaltar que se hace uso de <BuildKit> por lo que deberá 
 la máquina donde se quiera ejecutar. 
 
 Para la ejecución de los test vale con ejecutar el siguiente comando:
-`docker build --target test .`
+```bash
+docker build --target test .
+```
   
-Este comando de `docker` exporta los resultados del test en una página html en el directorio actual.
+El siguiente comando de `docker` exporta los resultados del test en una página html en el directorio actual. 
+```bash
+docker build -t test --output results .
+```
 
 #### En Local
 Si se quiere probar en local hará falta instalarse todos los requisitos y los datos que se encuentran
