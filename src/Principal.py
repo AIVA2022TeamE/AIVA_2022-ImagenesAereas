@@ -28,7 +28,7 @@ class Principal:
             # cv.imshow(filename, output_image)
             # cv.waitKey(0)
             cv.imwrite(self.output + "/" + filename, output_image)
-            cv.destroyAllWindows()
+            # cv.destroyAllWindows()
 
 
 if __name__ == "__main__":

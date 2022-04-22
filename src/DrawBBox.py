@@ -13,9 +13,9 @@ class DrawBBox:
         :param List vehicles: The list of all the vehicles.
         """
         for v in vehicles:
-            row, col, width, height = v.get_image_info()
+            row_min, col_min, row_max, col_max = v.get_image_info()
 
             # Draw rectangle
-            cv.rectangle(image, (col, row), (col + width, row + height), (0, 0, 255), thickness=2)
+            cv.rectangle(image, (col_min, row_min), (col_max, row_max), (0, 0, 255), thickness=2)
 
         return image

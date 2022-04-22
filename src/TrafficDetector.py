@@ -1,6 +1,7 @@
 from typing import List
 import numpy as np
-import Detector
+import YoloDetector
+from tqdm import tqdm
 # import map_slicer
 
 
@@ -12,7 +13,7 @@ class TrafficDetector:
         self._img = img
         # self._coordinates = None
         self._vehicles = []
-        self._detector = Detector.Detector
+        self._detector = YoloDetector.YoloDetector()
 
     def get_cars_from_image(self) -> List:
         """
@@ -30,14 +31,15 @@ class TrafficDetector:
         Iterates around the image and calls Detector to detect vehicles in sub-image.
         """
 
-        STEP = 250
-
+        STEP = 500
         cols, rows = self._img.shape[:-1]
+        slides = int((cols / STEP) * (rows / STEP))
+        i = 1
         for col in range(0, cols, STEP):
             for row in range(0, rows, STEP):
-                vehicles = self._detector.detect_vehicles(
-                    self._img[row: row + STEP, col: col + STEP], row, col
-                )
+                print("Slide", i, "/", slides)
+                i += 1
+                vehicles = self._detector.detect_vehicles(self._img[row: row + STEP, col: col + STEP], row, col)
                 self._vehicles.append(vehicles)
     
     def get_cars_density_from_image(self):

@@ -1,6 +1,7 @@
-numpy
-requests
-opencv-python
+numpy~=1.22.3
+requests~=2.27.1
+opencv-python~=4.5.5.64
 setuptools==57.5.0
 GDAL==3.2.2
 html-testRunner
+torch~=1.11.0
