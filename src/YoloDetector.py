@@ -16,11 +16,13 @@ class YoloDetector:
 
         model = torch.hub.load('ultralytics/yolov5', 'custom', path='yolo_opencv/best.pt')  # local model
         # Inference
+        print(f"Img shape: {img.shape}")
         results = model(img, size=500)
         value = results.xyxy[0]
         vehicles = []
         for tensor in value:
-            vehicle = tensor.numpy()
+            # Move numpy if tensor if in gpu
+            vehicle = tensor.numpy() if 'cpu' in str(tensor.device) else tensor.cpu().numpy()
             r_min = int(vehicle[1]) + row
             c_min = int(vehicle[0]) + col
             r_max = int(vehicle[3]) + row

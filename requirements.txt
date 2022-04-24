@@ -4,4 +4,11 @@ opencv-python~=4.5.5.64
 setuptools==57.5.0
 GDAL==3.2.2
 html-testRunner
+pandas
 torch~=1.11.0
+--extra-index-url https://download.pytorch.org/whl/cu113
+torchvision
+matplotlib
+seaborn
+pyyaml
+Pillow==9.1.0

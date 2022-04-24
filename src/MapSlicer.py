@@ -70,22 +70,23 @@ class MapSlicer:
 
         return [latlong_min[:-1], latlong_max[:-1]]
 
-    def get_street_image(self, image, street):
+    def get_street_image(self, image, street, output_path=None):
         # Read image with opencv
         img = cv2.imread(image)
         coordenates_bbox = self.get_street_box_in_coordinates(street)
 
         # Get pixel coordenates
         min_x, min_y = self.get_pixel_from_coordinates(
-            "data/austin1.tif", coordenates_bbox[0])
+            image, coordenates_bbox[0])
         max_x, max_y = self.get_pixel_from_coordinates(
-            "data/austin1.tif", coordenates_bbox[1])
+            image, coordenates_bbox[1])
 
         # Crop image
         cropped_img = img[max_y-50:min_y, min_x-30:max_x+40, :]
 
         # Save image
-        cv2.imwrite("data/cropped.jpg", cropped_img)
+        if output_path is not None:
+            cv2.imwrite(f"{output_path}/cropped.jpg", cropped_img)
 
         return cropped_img
 
@@ -101,8 +102,8 @@ if __name__ == "__main__":
         "Lark Cove, austin")
     print(coordenates_bbox_clawson)
     print(m.get_pixel_from_coordinates(
-        "data/austin1.tif", coordenates_bbox_clawson[0]))
+        "images/austin1.tif", coordenates_bbox_clawson[0]))
     print(m.get_pixel_from_coordinates(
-        "data/austin1.tif", coordenates_bbox_clawson[1]))
+        "images/austin1.tif", coordenates_bbox_clawson[1]))
 
-    m.get_street_image("data/austin1.tif", "Green Forest Dr, austin")
+    m.get_street_image("images/austin1.tif", "Green Forest Dr, austin", "images")
