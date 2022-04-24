@@ -16,7 +16,6 @@ class YoloDetector:
 
         model = torch.hub.load('ultralytics/yolov5', 'custom', path='yolo_opencv/best.pt')  # local model
         # Inference
-        print(f"Img shape: {img.shape}")
         results = model(img, size=500)
         value = results.xyxy[0]
         vehicles = []

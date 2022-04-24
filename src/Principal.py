@@ -39,9 +39,9 @@ class Principal:
             draw_bbox = DrawBBox.DrawBBox()
             output_image = draw_bbox.draw(image, vehicles)
 
-            print(self.output + "/" + filename)
             output_filename = filename.split("/")[-1].split(".")[0] + "_detected.jpg"
             output_name = os.path.join(self.output, output_filename)
+            print(f"Saving image {output_name}")
             cv.imwrite(output_name, output_image)
             cv.destroyAllWindows()
 

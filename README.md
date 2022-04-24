@@ -44,6 +44,24 @@ iv) El siguiente paso es la ejecución del programa.
   
     * docker build --target src
 
+
+## Uso del detector
+Se ha desarrollado un despliegue fácil en docker. Para hacer uso de la aplicación es necesario contar con un directorio donde tener todas las imágenes que se quieran escanear. También habrá que especificar un directorio de salida. El uso del contenedor es el siguiente:
+
+### Ejecución del contenedor
+Detectar una calle dentro de una imágen
+```bash
+ docker run --gpus all -v $DATA_DIR:/app/data davidcorreas/traffic_detector --input /app/data/input/austin1.tif --output /app/data/output --street_name "Green Forest Dr, austin"
+ ```
+
+ Detectar en imágenes de una carpeta
+```bash
+ docker run --gpus all -v $DATA_DIR:/app/data davidcorreas/traffic_detector --input /app/data/input --output /app/data/output
+ ```
+
+ ### Ejecución del contenedor con GPU
+ Para hacer uso de la gpu es posible usar `--gpus all` en el comando `docker run` siempre y cuando haya disponible una gpu en el docker host.
+
 ## Tests
 Se han implementado una serie de tests que prueban el correcto funcionamiento del sistema. 
 Gracias a estos se puede definir y acotar la funcionalidad del sistema y sus funciones.

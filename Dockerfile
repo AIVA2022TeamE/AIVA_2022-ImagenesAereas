@@ -5,7 +5,9 @@ ENV CPLUS_INCLUDE_PATH /usr/include/gdal
 ENV C_INCLUDE_PATH /usr/include/gdal
 ENV QT_QPA_PLATFORM offscreen
 COPY requirements.txt .
-RUN xargs -n 1 pip install < requirements.txt
+RUN pip install -r requirements.txt
+# Outside of requirements due to problems with setuptools
+RUN pip install GDAL==3.2.2
 
 CMD ["/bin/bash"]
 
@@ -25,3 +27,10 @@ RUN python ./*.py
 
 FROM scratch AS test
 COPY --from=make_test /app/test/results .
+
+
+FROM environment as deploy
+WORKDIR /app/src
+COPY ./src .
+
+ENTRYPOINT [ "python", "Principal.py" ]

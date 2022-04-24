@@ -12,7 +12,7 @@ class TrafficDetector:
         self._img = img
         # self._coordinates = None
         self._vehicles = []
-        self._detector = YoloDetector.YoloDetector()
+        self._detector = YoloDetector.YoloDetector()    
 
     def get_cars_from_image(self) -> List:
         """
@@ -36,7 +36,7 @@ class TrafficDetector:
         i = 1
         for col in range(0, cols, STEP):
             for row in range(0, rows, STEP):
-                print("Slide", i, "/", slides)
+                print(f"Slide {i}/{slides}", flush=True)
                 i += 1
                 vehicles = self._detector.detect_vehicles(
                     self._img[row: row + STEP, col: col + STEP], row, col
