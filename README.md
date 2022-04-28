@@ -49,7 +49,8 @@ iv) El siguiente paso es la ejecución del programa.
 Se ha desarrollado un despliegue fácil en docker. Para hacer uso de la aplicación es necesario contar con un directorio donde tener todas las imágenes que se quieran escanear. También habrá que especificar un directorio de salida. El uso del contenedor es el siguiente:
 
 ### Ejecución del contenedor
-Detectar una calle dentro de una imágen
+Detectar una calle dentro de una imágen. En este ejemplo las imágenes estarían en un directorio del host `$DATA_DIR/input/*.tif`. Es importante mencionar que `$DATA_DIR` debe de ser una ruta absoluta. 
+
 ```bash
  docker run --gpus all -v $DATA_DIR:/app/data davidcorreas/traffic_detector --input /app/data/input/austin1.tif --output /app/data/output --street_name "Green Forest Dr, austin"
  ```
